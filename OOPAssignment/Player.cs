@@ -1,9 +1,11 @@
 ﻿using System;
-
-
-
-     class myPlayer
+     class Player
     {
+    String playerLocation { get; set;}
+        public void directions() 
+        {
+
+        }
       
     }
 

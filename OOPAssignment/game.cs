@@ -4,8 +4,11 @@ class Program
 {
     static void Main()
     {
+      
        room myroom = new room();
         myroom.roomoutput();
+        Player myplayer = new Player();
+        myplayer.directions();
     }
 
 }
