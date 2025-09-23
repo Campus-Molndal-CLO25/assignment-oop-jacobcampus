@@ -19,9 +19,14 @@ public class Game
         startRoom.startRoom();
         
 
-        Room forest = new Room();
+        
         Room castle = new Room();
 
+    }
+    public void Forest() 
+    {
+        Room Startforest = new Room();
+        Startforest.Startforest();
     }
    
 }

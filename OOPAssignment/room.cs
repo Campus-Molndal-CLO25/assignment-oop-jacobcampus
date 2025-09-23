@@ -10,7 +10,7 @@ public class Room
 
     public void startRoom()
     {
-        Console.WriteLine("du står vid en ruin och kan bara gå norr");
+        Console.WriteLine("rum 1 du står vid en ruin och kan bara gå norr");
         direction = Console.ReadLine();
         if (direction == "gå norr") 
         { 
@@ -20,9 +20,10 @@ public class Room
             { 
                 itemsadd.Insert(0, "svärd");
             }
-            else
+            else if (loot == "gå syd")
             {
-                return;
+                Game game = new Game();
+                game.Forest();
             }
 
         }
@@ -32,11 +33,20 @@ public class Room
         if (direction == "gå syd")
         {
             Game game = new Game();
-            game.Start();
+            game.Forest();
         }
 
 
 
+    }
+    public void Startforest() 
+    {
+        Console.WriteLine("du har kommit till rum2");
+        String titta = Console.ReadLine();
+        if (titta == "titta") 
+        {
+            Console.WriteLine("du har kommit till en mörkare och mer skrämmande skog du kan gå syd");
+        }
     }
 }
 
