@@ -1,65 +1,42 @@
 ﻿using System;
-using System.Globalization;
-class room
+using System.Collections.Generic;
+using System.Text;
 
+public class Room
 {
-    String direction { get; set; }
-    public int roomnumber { get; set; }
-    String yesno { get; set; }
-    List<string> itemsadder = new List<string>();
+    String direction {  get; set; }
+    String loot { get; set; }
+    List<string> itemsadd = new List<string>();
 
-
-    public void roomoutput()
+    public void startRoom()
     {
-        Console.WriteLine("du står vid en gammal ruin du kan bara gå norr");
-        Console.WriteLine("vill du gå norr?");
+        Console.WriteLine("du står vid en ruin och kan bara gå norr");
         direction = Console.ReadLine();
-        rum1(direction);
-        
-
-
-    }
-    private void rum1(String x)
-    {
-        if (x == "gå norr") {
-            Console.WriteLine("du är i rum " + roomnumber++);
-            Console.WriteLine(" du går norr och kommer till en skog i skogen det finns konstiga ljud i skogen det ligger ett svärd på marken ");
-         
-            yesno = Console.ReadLine();
-            if (yesno == "ta svärd") 
-            {
-            Console.Write("du tog svärdet och kan välja mellan att gå syd och väst ");
-                itemsadder.Add("Svärd");
-                direction = Console.ReadLine();
-
+        if (direction == "gå norr") 
+        { 
+            Console.WriteLine("du har kommit in i en mörk skog och hittar en svärd och kan bara gå syd");
+            loot = Console.ReadLine();
+            if(loot=="ta svärd") 
+            { 
+                itemsadd.Insert(0, "svärd");
             }
             else
             {
-            Console.WriteLine("du tog inte svärd och kan välja mellan att gå syd och väst ");
-                direction = Console.ReadLine();
+                return;
             }
-            rum2(direction);
+
         }
         else
+            Environment.Exit(0);
+        direction = Console.ReadLine();
+        if (direction == "gå syd")
         {
-         Console.WriteLine("du står kvar vid ruinen");
-            return;
+            Game game = new Game();
+            game.Start();
         }
-    }
-    private void rum2(String y)
-    {
-        if (y == "gå väst")
-        {
-            Console.WriteLine("du gick väst");
-            String titta = Console.ReadLine();
-            if (titta == "titta")
-                Console.WriteLine("du är i en mörk källare med en fackla framför dig");
-        }
-        else {
-            Console.WriteLine("du gick syd");
-        }
-    }
-    
-}
 
+
+
+    }
+}
 
