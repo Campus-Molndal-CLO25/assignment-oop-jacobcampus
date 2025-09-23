@@ -5,9 +5,11 @@ using System.Text;
 
     public class Inventory
     {
-       public void invdisplay() 
+    List<string> itemsadd = new List<string>();
+
+    public void invdisplay() 
         {
-        
+        Console.WriteLine(itemsadd[0]);
         }
     }
 

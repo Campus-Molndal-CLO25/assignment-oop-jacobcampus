@@ -1,4 +1,4 @@
-﻿using OOPAssignment;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,6 +20,11 @@ public class Room
             if(loot=="ta svärd") 
             { 
                 itemsadd.Insert(0, "svärd");
+            }
+            else if (direction == "inventory")
+            {
+                Inventory invhelp = new Inventory();
+                invhelp.invdisplay();
             }
             else if (loot == "gå öster")
             {
