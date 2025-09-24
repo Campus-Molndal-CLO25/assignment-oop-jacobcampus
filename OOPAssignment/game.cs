@@ -22,8 +22,7 @@ public class Game
     public void Start()
     {
         CreateWorld();
-        Console.WriteLine(currentRoom.Name);
-        Console.WriteLine(currentRoom.Description);
+     
         while (!gameOver)
         {
             Console.WriteLine(currentRoom.Description);
@@ -42,14 +41,19 @@ public class Game
         var svärd = new Item("svärd", "ett silver svärd.");
         var diamant = new Item("diamant", "en stort diamant =victory");
 
-        Room start = new Room("start rum1", "du står vid en ruin.", new List<Item>());
-        Room skogen = new Room("skog rum2", "du står i en mörk skog.", new List<Item>());
+        Room start = new Room("start rum1", "du står vid en ruin och kan bara gå norr", new List<Item>());
+        Room skogen = new Room("skog rum2", "du står i en mörk skog. och kan gå öster och syd ", new List<Item>());
         Room mörkskog = new Room("grotta rum3", "du är i en mörkare skog och ser ett svärd.", new List<Item> { svärd, });
 
         rooms["start"] = start;
         rooms["skog"] = skogen;
         rooms["mörkskog"] = mörkskog;
 
+        //chatgpts idee
+        start.Exits["norr"] = "skog";
+        skogen.Exits["syd"] = "start";
+        skogen.Exits["öster"] = "mörkskog";
+        mörkskog.Exits["väster"] = "skog";
 
 
         currentRoom = start;
@@ -74,12 +78,27 @@ public class Game
         {
             Console.Write(inventory);
         }
-        else if (input.Contains("ta")) 
+        else if (input.Contains("ta"))
         {
-            Console.WriteLine("du tog " + Item.Name);
+            //Console.WriteLine("du tog " + Item.Name);
         }
+        //denna else if statsen hjälpte chatgpt till med 
+        else if (input.StartsWith("gå "))
         {
-        
+            string riktning = input.Substring(3); // plockar ut t.ex. "norr"
+            if (currentRoom.Exits.ContainsKey(riktning))
+            {
+                string nästaRumNamn = currentRoom.Exits[riktning];
+                currentRoom = rooms[nästaRumNamn];
+                Console.WriteLine("Du går " + riktning + "...");
+            }
+            else
+            {
+                Console.WriteLine("Du kan inte gå åt det hållet.");
+            }
         }
+
+
     }
 }
+
