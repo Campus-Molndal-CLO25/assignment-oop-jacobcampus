@@ -27,7 +27,7 @@ public class Game
      
         while (!gameOver)
         {
-            Console.WriteLine(currentRoom.Description);
+            Console.WriteLine(currentRoom);
             Console.Write("> ");
             string input = Console.ReadLine().ToLower();
             Input(input);
@@ -88,8 +88,13 @@ public class Game
         }
         else if (input == "inventory")
         {
-           // Console.Write(inventory) funkar inte
+            
+            foreach (var item in inventory)
+            {
+                Console.WriteLine("du har " + item.Name);
+            }
         }
+        //chat gpt som hjäpte till med denna if sats
         else if (input.Contains("ta "))
         {
             string itemNamn = input.Substring(3);
@@ -105,7 +110,7 @@ public class Game
                 {
                     if (itemToTake.Name.ToLower() == "diamant")
                     {
-                        Console.WriteLine("Grattis, du hittade diamanten och vann spelet!");
+                        Console.WriteLine("Diamanten är hittad och nu van du");
                         gameOver = true;
                     }
                 }

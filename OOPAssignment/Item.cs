@@ -5,7 +5,6 @@ using System.Text;
 public class Item
 {
     public string Name { get; set; }
-    public string Description { get; set; }
     public List<Item> Items = new List<Item>();
     public Item(string name, string description)
     {
